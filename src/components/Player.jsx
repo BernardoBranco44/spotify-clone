@@ -8,9 +8,9 @@ export default function Player({spotify}) {
     <div className="player">
       <div className="player-body">
         <Sidebar />
-        <Body />
+        <Body spotify={spotify} />
       </div>
-      <Footer />
+      <Footer spotify={spotify} />
     </div>
   )
 }

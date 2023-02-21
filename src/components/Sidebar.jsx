@@ -3,8 +3,11 @@ import SidebarOption from "./SidebarOption";
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import { useStateProvider } from "../StateProvider";
 
 export default function Sidebar() {
+  const [{playlists}, dispatch] = useStateProvider()
+
   return (
     <div className="sidebar">
       <img
@@ -19,6 +22,10 @@ export default function Sidebar() {
       <br />
       <strong className="sidebar-title">PLAYLISTS</strong>
       <hr />
+
+      {playlists?.items?.map(playlist => (
+        <SidebarOption key={playlist.name} title={playlist.name}/>
+      ))}
     </div>
   )
 }
