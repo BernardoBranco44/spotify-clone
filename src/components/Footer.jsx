@@ -16,7 +16,7 @@ export default function Footer({spotify}) {
 
   useEffect(() => {
     spotify.getMyCurrentPlaybackState().then((r) => {
-      
+
 
       dispatch({
         type: "SET_PLAYING",
@@ -78,10 +78,18 @@ export default function Footer({spotify}) {
     <div className="footer">
       <div className="footer-left">
         <img className="footer-album" src={item?.album.images[0].url} alt="" />
-        <div className="footer-song-info">
-          <h4></h4>
-          <p></p>
-        </div>
+        {console.log(item?.album.images[0])}
+        {item ? (
+          <div className="footer-song-nfo">
+            <h4>{item.name}</h4>
+            <p>{item.artists.map((artist) => artist.name).join(", ")}</p>
+          </div>
+        ) : (
+          <div className="footer_-song-info">
+            <h4>No song is playing</h4>
+            <p>...</p>
+          </div>
+        )}
       </div>
       <div className="footer-center">
         <ShuffleIcon className="footer-green" />
